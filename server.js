@@ -1,6 +1,7 @@
 const app = require('./src/app');
+const configMongodb = require('./src/configs/config.mongodb');
 
-const PORT = process.env.PORT || 3052;
+const PORT = configMongodb.app.port;
 
 const server = app.listen(PORT, () => {
   console.log(`WSV start with port ${PORT}`);

@@ -3,7 +3,7 @@
 const shopModel = require('../models/shop.model');
 
 class ShopService {
-  static findByEmail = async ({
+  static findOneByEmail = async ({
     email,
     select = { email: 1, password: 2, name: 1, status: 1, roles: 1 },
   }) => {

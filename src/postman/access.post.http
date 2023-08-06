@@ -1,6 +1,6 @@
 @url_dev = http://localhost:3055/v1/api
 
-### signUp
+### signup
 
 POST {{url_dev}}/shop/signup
 Content-Type: application/json
@@ -11,3 +11,28 @@ x-api-key: abcxyz
   "email": "shopjs@gmail.com",
   "password": "123456"
 }
+
+### login
+
+POST {{url_dev}}/shop/login
+Content-Type: application/json
+x-api-key: abcxyz
+
+{
+  "email": "shopjs@gmail.com",
+  "password": "123456"
+}
+
+### logout
+GET {{url_dev}}/shop/logout
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTEzMTM5MzgsImV4cCI6MTY5MTQ4NjczOH0.F9PUCKXeI1jKPYDDuIyhB4HtkHU6Xgip1iQ3CNr8GU8
+
+### refresh token
+GET {{url_dev}}/shop/handleRefreshToken
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+x-refresh-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTEzMTQ5MDEsImV4cCI6MTY5MTkxOTcwMX0.2OiOhEWh8DQ7KYXDO6q2aSuoT-YA2HjrRYieZoTgRx8

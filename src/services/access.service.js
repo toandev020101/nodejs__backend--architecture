@@ -2,19 +2,22 @@
 
 const shopModel = require('../models/shop.model');
 const bcrypt = require('bcrypt');
-const crypto = require('node:crypto');
 const KeyTokenService = require('./keyToken.service');
-const { createTokenPair } = require('../auth/authUtils');
-const { getInfoData } = require('../utils');
-const { BadRequestError, AuthFailureError } = require('../core/error.response');
+const { createTokenPair, verifyJWT } = require('../auth/authUtils');
+const { getInfoData, createKey } = require('../utils');
+const {
+  BadRequestError,
+  AuthFailureError,
+  ForbiddenError,
+} = require('../core/error.response');
 const ShopService = require('./shop.service');
 const ROLE_SHOP = require('../constants/role');
 
 class AccessService {
-  static signUp = async ({ name, email, password }) => {
+  static signup = async ({ name, email, password }) => {
     // step 1: check email exists ?
-    const hodelShop = await shopModel.findOne({ email }).lean();
-    if (hodelShop) {
+    const holderShop = await shopModel.findOne({ email }).lean();
+    if (holderShop) {
       throw new BadRequestError('Error: Shop already registered!');
     }
 
@@ -32,34 +35,27 @@ class AccessService {
     // step 4: create token, refreshToken
     if (newShop) {
       // created privateKey, publicKey
-      const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
-        modulusLength: 4096,
-        privateKeyEncoding: {
-          type: 'pkcs1', // Public key CrytoGraphy standards 1
-          format: 'pem',
-        },
-        publicKeyEncoding: {
-          type: 'pkcs1', // Public key CrytoGraphy standards 1
-          format: 'pem',
-        },
-      });
+      const privateKey = createKey();
+      const publicKey = createKey();
 
-      // save publicKey in db
-      const publicKeyString = await KeyTokenService.createKeyToken({
+      // save private, publicKey in db
+      const keyToken = await KeyTokenService.createKeyToken({
         userId: newShop._id,
+        privateKey,
         publicKey,
       });
 
-      // check publicKeyString
-      if (!publicKeyString) {
-        throw new BadRequestError('Error: publicKeyString error!');
+      // check keyToken
+      if (!keyToken) {
+        throw new BadRequestError('Error: keyToken error!');
       }
 
       // created token pair
-      const tokens = await createTokenPair(
-        { userId: newShop._id, email: newShop.email },
+      const tokens = await createTokenPair({
+        payload: { userId: newShop._id, email: newShop.email },
         privateKey,
-      );
+        publicKey,
+      });
 
       if (!tokens) {
         throw new BadRequestError('Token not sign!');
@@ -79,7 +75,7 @@ class AccessService {
 
   static login = async ({ email, password, refreshToken = null }) => {
     // check email
-    const foundShop = await ShopService.findByEmail({ email });
+    const foundShop = await ShopService.findOneByEmail({ email });
     if (!foundShop) {
       throw new BadRequestError('Shop not registered!');
     }
@@ -91,24 +87,16 @@ class AccessService {
     }
 
     // created privateKey, publicKey
-    const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
-      modulusLength: 4096,
-      privateKeyEncoding: {
-        type: 'pkcs1', // Public key CrytoGraphy standards 1
-        format: 'pem',
-      },
-      publicKeyEncoding: {
-        type: 'pkcs1', // Public key CrytoGraphy standards 1
-        format: 'pem',
-      },
-    });
+    const privateKey = createKey();
+    const publicKey = createKey();
 
     // created token pair
     const { _id: userId } = foundShop;
-    const tokens = await createTokenPair(
-      { userId, email: foundShop.email },
+    const tokens = await createTokenPair({
+      payload: { userId, email: foundShop.email },
       privateKey,
-    );
+      publicKey,
+    });
 
     if (!tokens) {
       throw new BadRequestError('Token not sign!');
@@ -116,6 +104,7 @@ class AccessService {
 
     await KeyTokenService.createKeyToken({
       userId,
+      privateKey,
       publicKey,
       refreshToken: tokens.refreshToken,
     });
@@ -129,10 +118,51 @@ class AccessService {
     };
   };
 
-  static logout = async (keyStore) => {
-    const delKey = await KeyTokenService.removeOneById(keyStore._id);
+  static logout = async (keyToken) => {
+    const delKey = await KeyTokenService.removeOneById(keyToken._id);
     console.log(delKey);
     return delKey;
+  };
+
+  static handleRefreshToken = async ({ refreshToken, user, keyToken }) => {
+    const { userId, email } = user;
+
+    // check this token used
+    if (keyToken.refreshTokensUsed.includes(refreshToken)) {
+      // delete all token in keyToken
+      await KeyTokenService.removeOneByUserId(userId);
+      throw new ForbiddenError('Something wrong happend! PLS reLogin');
+    }
+
+    // check refreshToken in keyToken
+    if (keyToken.refreshToken !== refreshToken) {
+      throw new AuthFailureError('Shop not registered!');
+    }
+
+    // check userId
+    const foundShop = await ShopService.findOneByEmail({ email });
+    if (!foundShop) {
+      throw new AuthFailureError('Shop not registered!');
+    }
+
+    // create token new
+    const tokens = await createTokenPair({
+      payload: { userId, email },
+      privateKey: keyToken.privateKey,
+      publicKey: keyToken.publicKey,
+    });
+
+    // update token
+    await KeyTokenService.updateTokenById({
+      id: keyToken._id,
+      refreshToken: tokens.refreshToken,
+      refreshTokenUsed: refreshToken,
+    });
+
+    return {
+      user,
+      tokens,
+    };
   };
 }
 

@@ -4,10 +4,10 @@ const { CREATED, OK } = require('../core/success.response');
 const AccessService = require('../services/access.service');
 
 class AccessController {
-  signUp = async (req, res, next) => {
+  signup = async (req, res, next) => {
     new CREATED({
       message: 'Registered OK!',
-      metadata: await AccessService.signUp(req.body),
+      metadata: await AccessService.signup(req.body),
     }).send(res);
   };
 
@@ -21,7 +21,18 @@ class AccessController {
   logout = async (req, res, next) => {
     new OK({
       message: 'Logout OK!',
-      metadata: await AccessService.logout(req.keyStore),
+      metadata: await AccessService.logout(req.keyToken),
+    }).send(res);
+  };
+
+  handleRefreshToken = async (req, res, next) => {
+    new OK({
+      message: 'Get Token OK!',
+      metadata: await AccessService.handleRefreshToken({
+        refreshToken: req.refreshToken,
+        user: req.user,
+        keyToken: req.keyToken,
+      }),
     }).send(res);
   };
 }

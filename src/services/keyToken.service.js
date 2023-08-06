@@ -4,27 +4,30 @@ const keyTokenModel = require('../models/keyToken.model');
 const { Types } = require('mongoose');
 
 class KeyTokenService {
-  static createKeyToken = async ({ userId, publicKey, refreshToken }) => {
+  static createKeyToken = async ({
+    userId,
+    privateKey,
+    publicKey,
+    refreshToken = null,
+  }) => {
     try {
-      // convert to string
-      const publicKeyString = publicKey.toString();
-
       // create keyToken
       const filter = { userId };
       const update = {
-        publicKey: publicKeyString,
+        privateKey,
+        publicKey,
         refreshTokensUsed: [],
         refreshToken,
       };
       const options = { upsert: true, new: true };
 
-      const tokens = await keyTokenModel.findOneAndUpdate(
+      const keyToken = await keyTokenModel.findOneAndUpdate(
         filter,
         update,
         options,
       );
 
-      return tokens ? tokens.publicKey : null;
+      return keyToken ? keyToken : null;
     } catch (error) {
       return error;
     }
@@ -36,8 +39,42 @@ class KeyTokenService {
       .lean();
   };
 
+  static findOneByRefreshTokenUsed = async (refreshToken) => {
+    return await keyTokenModel
+      .findOne({ refreshTokensUsed: refreshToken })
+      .lean();
+  };
+
+  static findOneByRefreshToken = async (refreshToken) => {
+    return await keyTokenModel.findOne({ refreshToken }).lean();
+  };
+
+  static updateTokenById = async ({ id, refreshTokenUsed, refreshToken }) => {
+    try {
+      // update keyToken
+      const filter = { _id: id };
+      const update = {
+        $set: {
+          refreshToken,
+        },
+        $addToSet: {
+          refreshTokensUsed: refreshTokenUsed,
+        },
+      };
+      const options = { upsert: true, new: true };
+
+      await keyTokenModel.findOneAndUpdate(filter, update, options);
+    } catch (error) {
+      return error;
+    }
+  };
+
   static removeOneById = async (id) => {
     return await keyTokenModel.deleteOne(id);
+  };
+
+  static removeOneByUserId = async (userId) => {
+    return await keyTokenModel.deleteOne({ userId });
   };
 }
 

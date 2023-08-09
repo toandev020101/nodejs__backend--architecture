@@ -1,0 +1,76 @@
+@url_dev = http://localhost:3055/v1/api/product
+
+### create product
+
+POST {{url_dev}}
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+
+{
+  "product_name": "New Product",
+  "product_description": "High-quality product",
+  "product_price": 50,
+  "product_type": "Furniture",
+  "product_thumb": "product_thumb",
+  "product_quantity": 5,
+  "product_attributes": {
+    "brand": "Levis",
+    "size": "L",
+    "material": "Denim"
+  }
+}
+
+### get list product draft
+
+GET {{url_dev}}/draft/all
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTEzNzU1OTksImV4cCI6MTY5MTU0ODM5OX0._8Rv2tn2Qgfvt3dGytt8igIDM6kpOjlmslhPtX84rrM
+
+### get list product published
+
+GET {{url_dev}}/published/all
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTEzNzU1OTksImV4cCI6MTY5MTU0ODM5OX0._8Rv2tn2Qgfvt3dGytt8igIDM6kpOjlmslhPtX84rrM
+
+### get list search product published
+
+GET {{url_dev}}/search/product
+x-api-key: abcxyz
+
+### get all product published
+
+GET {{url_dev}}
+x-api-key: abcxyz
+
+### get product published
+
+GET {{url_dev}}/64d0bdff6aed3be931273921
+x-api-key: abcxyz
+
+### publish product
+
+PATCH {{url_dev}}/publish/64d3606aa8940382f089f344
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+
+### update product
+
+PATCH {{url_dev}}/64d3606aa8940382f089f344
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+
+{
+  "product_name": "New Jeans 2",
+  "product_price": 100,
+  "product_type": "Furniture",
+  "product_attributes": {
+    "brand": "Levis 005"
+  }
+}

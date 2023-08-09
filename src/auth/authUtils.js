@@ -83,6 +83,7 @@ const authentication = asyncHandler(async (req, res, next) => {
     }
 
     req.keyToken = keyToken;
+    req.user = decodeUser;
     return next();
   } catch (error) {
     throw error;

@@ -9,7 +9,7 @@ x-client-id: 64cf6706365c514ee5e11dd2
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
 
 {
-  "product_name": "New Product",
+  "product_name": "New Product_Inventory",
   "product_description": "High-quality product",
   "product_price": 50,
   "product_type": "Furniture",

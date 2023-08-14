@@ -1,0 +1,53 @@
+@url_dev = http://localhost:3055/v1/api/discount
+
+### create discount
+POST {{url_dev}}
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+
+{
+  "name": "name fixed amount all",
+  "description": "description",
+  "type": "percentage",
+  "value": 10,
+  "maxValue": 30000,
+  "code": "SHOP-1133",
+  "startDate": "2023-11-10 15:43:00",
+  "endDate": "2023-11-15 15:43:00",
+  "isActive":true,
+  "minOrderValue": 200000,
+  "productIds": ["64d3606aa8940382f089f344", "64d3928e04a24a514e2a6584"],
+  "appliesTo": "all",
+  "maxUses": 100,
+  "usesCount": 0,
+  "maxUsesPerUser": 1,
+  "usersUsed": []
+}
+
+### get all discount with products
+GET {{url_dev}}/listProductCode?code=SHOP-1122&shopId=64cf6706365c514ee5e11dd2&limit=50&page=1
+x-api-key: abcxyz
+
+### get all discount by shop
+GET {{url_dev}}?limit=50&page=1
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE4MjQ1NzMsImV4cCI6MTY5MTk5NzM3M30.Ua5ofWx9m3GcGpzwflGYpUY7F9cuRcan_eEaT9GIOjg
+
+### get discount amount
+POST {{url_dev}}/amount
+Content-Type: application/json
+x-api-key: abcxyz
+
+{
+  "codeId": "SHOP-1133",
+  "userId": 2,
+  "shopId": "64cf6706365c514ee5e11dd2",
+  "products": [{
+    "productId": "64d3606aa8940382f089f344",
+    "quantity": 5,
+    "price": 120000
+  }]
+}

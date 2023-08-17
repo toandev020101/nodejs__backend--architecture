@@ -3,6 +3,7 @@
 const cartModel = require('../models/cart.model');
 const ProductRepository = require('../models/repositories/product.repository');
 const { NotFoundError } = require('../core/error.response');
+const { convertToObjectIdMongodb } = require('../utils');
 
 /**
  * key features
@@ -15,8 +16,17 @@ const { NotFoundError } = require('../core/error.response');
  */
 
 class CartService {
+  static async findOneCartById(cartId) {
+    return await cartModel
+      .findOne({
+        _id: convertToObjectIdMongodb(cartId),
+        cart_state: 'active',
+      })
+      .lean();
+  }
+
   static async createUserCart({ userId, product }) {
-    const query = { cart_userId: userId, cart_state: 'active' };
+    const query = { cart_userId: +userId, cart_state: 'active' };
     const updateOrInsert = {
       $addToSet: {
         cart_products: product,

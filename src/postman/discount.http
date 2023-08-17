@@ -5,10 +5,10 @@ POST {{url_dev}}
 Content-Type: application/json
 x-api-key: abcxyz
 x-client-id: 64cf6706365c514ee5e11dd2
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTIwOTMxMTgsImV4cCI6MTY5MjI2NTkxOH0.3_HKZ3LBI6TGvr0TIqzFWZn2nIq3SSKqziQ8O64NV20
 
 {
-  "name": "name fixed amount all",
+  "name": "name percentage sp 2 shop 2",
   "description": "description",
   "type": "percentage",
   "value": 10,
@@ -18,8 +18,8 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2
   "endDate": "2023-11-15 15:43:00",
   "isActive":true,
   "minOrderValue": 200000,
-  "productIds": ["64d3606aa8940382f089f344", "64d3928e04a24a514e2a6584"],
-  "appliesTo": "all",
+  "productIds": ["64db4a215abd09c10fea8ad4"],
+  "appliesTo": "specific",
   "maxUses": 100,
   "usesCount": 0,
   "maxUsesPerUser": 1,

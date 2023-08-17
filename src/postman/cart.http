@@ -5,16 +5,16 @@ POST {{url_dev}}
 Content-Type: application/json
 x-api-key: abcxyz
 x-client-id: 64cf6706365c514ee5e11dd2
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTIwOTMxMTgsImV4cCI6MTY5MjI2NTkxOH0.3_HKZ3LBI6TGvr0TIqzFWZn2nIq3SSKqziQ8O64NV20
 
 {
   "userId": 1001,
   "product": {
-    "productId": "64d3606aa8940382f089f344",
-    "shopId": "64cf6706365c514ee5e11dd2",
-    "quantity": 4,
-    "name": "New Jeans 2",
-    "price": 100
+    "productId": "64db4a215abd09c10fea8ad4",
+    "shopId": "64db49f25abd09c10fea8acf",
+    "quantity": 10,
+    "name": "New Product shop 2",
+    "price": 20000
   }
 }
 
@@ -36,7 +36,7 @@ x-api-key: abcxyz
 
 
 ### update cart
-POST {{url_dev}}
+POST {{url_dev}}/update
 Content-Type: application/json
 x-api-key: abcxyz
 x-client-id: 64cf6706365c514ee5e11dd2
@@ -49,10 +49,10 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2
       "shopId": "64cf6706365c514ee5e11dd2",
       "item_products":[
         {
-          "quantity": 2,
+          "quantity": 5,
           "price": 124,
           "shopId": "64cf6706365c514ee5e11dd2",
-          "old_quantity": 4,
+          "old_quantity": 2,
           "productId": "64d3606aa8940382f089f344"
         }
       ],

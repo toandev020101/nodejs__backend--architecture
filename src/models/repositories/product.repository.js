@@ -5,6 +5,24 @@ const { productModel } = require('../product.model');
 const { getSelectData, getUnSelectData } = require('../../utils');
 
 class ProductRepository {
+  static checkProductByServer = async (products) => {
+    return await Promise.all(
+      products.map(async (product) => {
+        const foundProduct = await ProductRepository.findProduct({
+          product_id: product.productId,
+        });
+
+        if (foundProduct) {
+          return {
+            price: foundProduct.product_price,
+            quantity: foundProduct.product_quantity,
+            productId: foundProduct._id,
+          };
+        }
+      }),
+    );
+  };
+
   // GET
   static queryProduct = async ({ query, limit, skip }) => {
     return await productModel

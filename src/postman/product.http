@@ -5,19 +5,19 @@
 POST {{url_dev}}
 Content-Type: application/json
 x-api-key: abcxyz
-x-client-id: 64cf6706365c514ee5e11dd2
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+x-client-id: 64db49f25abd09c10fea8acf
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGRiNDlmMjVhYmQwOWMxMGZlYThhY2YiLCJlbWFpbCI6InNob3BqczJAZ21haWwuY29tIiwiaWF0IjoxNjkyMDkyOTE0LCJleHAiOjE2OTIyNjU3MTR9.BHp0ALOaCjXWnPUvoE2YdF0oJqbMj7nXn4aQHZ4asQY
 
 {
-  "product_name": "New Product_Inventory",
-  "product_description": "High-quality product",
-  "product_price": 50,
-  "product_type": "Furniture",
+  "product_name": "New Product shop 2",
+  "product_description": "High-quality product 2",
+  "product_price": 100,
+  "product_type": "Clothing",
   "product_thumb": "product_thumb",
-  "product_quantity": 5,
+  "product_quantity": 15,
   "product_attributes": {
-    "brand": "Levis",
-    "size": "L",
+    "brand": "Lis",
+    "size": "M",
     "material": "Denim"
   }
 }
@@ -53,10 +53,10 @@ x-api-key: abcxyz
 
 ### publish product
 
-PATCH {{url_dev}}/publish/64d3606aa8940382f089f344
+PATCH {{url_dev}}/publish/64db4a215abd09c10fea8ad4
 x-api-key: abcxyz
-x-client-id: 64cf6706365c514ee5e11dd2
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTE1NzMwMzAsImV4cCI6MTY5MTc0NTgzMH0.hBt3LCnlQMIrHwSL6ErOfHqsZC3z-7xuBmPmttiDEMc
+x-client-id: 64db49f25abd09c10fea8acf
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGRiNDlmMjVhYmQwOWMxMGZlYThhY2YiLCJlbWFpbCI6InNob3BqczJAZ21haWwuY29tIiwiaWF0IjoxNjkyMDkyOTE0LCJleHAiOjE2OTIyNjU3MTR9.BHp0ALOaCjXWnPUvoE2YdF0oJqbMj7nXn4aQHZ4asQY
 
 ### update product
 

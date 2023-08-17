@@ -1,0 +1,43 @@
+@url_dev = http://localhost:3055/v1/api/checkout
+
+### review checkout
+POST {{url_dev}}/review
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64cf6706365c514ee5e11dd2
+authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTIwOTMxMTgsImV4cCI6MTY5MjI2NTkxOH0.3_HKZ3LBI6TGvr0TIqzFWZn2nIq3SSKqziQ8O64NV20
+
+{
+  "cartId": "64dc835dba2fc1534e7d616c",
+  "userId": 1001,
+  "shop_order_ids": [
+    {
+      "shopId": "64cf6706365c514ee5e11dd2",
+      "shop_discounts": [],
+      "item_products": [
+        {
+          "price": 50000,
+          "quantity": 3,
+          "productId": "64db49e15abd09c10fea8ac7"
+        }
+      ]
+    },
+    {
+      "shopId": "64db49f25abd09c10fea8acf",
+      "shop_discounts": [
+        {
+          "shop_id": "64db49f25abd09c10fea8acf",
+          "discountId": "64db4b245abd09c10fea8ae6",
+          "codeId": "SHOP-1133"
+        }
+      ],
+      "item_products": [
+        {
+          "price": 20000,
+          "quantity": 10,
+          "productId": "64db4a215abd09c10fea8ad4"
+        }
+      ]
+    }
+  ]
+}

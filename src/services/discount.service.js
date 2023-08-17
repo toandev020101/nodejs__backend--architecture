@@ -179,10 +179,10 @@ class DiscountService {
       discount_value,
     } = foundDiscount;
     if (!discount_is_active) {
-      throw new BadRequestError(`Discount expried!`);
+      throw new BadRequestError('Discount expried!');
     }
     if (!discount_max_uses) {
-      throw new BadRequestError(`Discount are out!`);
+      throw new BadRequestError('Discount are out!');
     }
     // if (
     //   new Date() < new Date(discount_start_date) ||

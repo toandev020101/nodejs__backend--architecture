@@ -29,7 +29,7 @@ class DiscountRepository {
     page = 1,
     sort = 'ctime',
     filter,
-    unSelect,
+    select,
   }) => {
     const skip = (page - 1) * limit;
     const sortBy = sort === 'ctime' ? { _id: -1 } : { id: 1 };

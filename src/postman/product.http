@@ -5,8 +5,8 @@
 POST {{url_dev}}
 Content-Type: application/json
 x-api-key: abcxyz
-x-client-id: 64db49f25abd09c10fea8acf
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGRiNDlmMjVhYmQwOWMxMGZlYThhY2YiLCJlbWFpbCI6InNob3BqczJAZ21haWwuY29tIiwiaWF0IjoxNjkyMDkyOTE0LCJleHAiOjE2OTIyNjU3MTR9.BHp0ALOaCjXWnPUvoE2YdF0oJqbMj7nXn4aQHZ4asQY
+x-client-id: 64e7666a469766fe988f1196
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU3NjY2YTQ2OTc2NmZlOTg4ZjExOTYiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI4ODY2MzQsImV4cCI6MTY5MzA1OTQzNH0.y84x6cM-X17ql_jZCEBLb37dkwDLv3ECRSzsJdgwZAU
 
 {
   "product_name": "New Product shop 2",
@@ -33,8 +33,8 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2
 
 GET {{url_dev}}/published/all
 x-api-key: abcxyz
-x-client-id: 64cf6706365c514ee5e11dd2
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTEzNzU1OTksImV4cCI6MTY5MTU0ODM5OX0._8Rv2tn2Qgfvt3dGytt8igIDM6kpOjlmslhPtX84rrM
+x-client-id: 64e7666a469766fe988f1196
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU3NjY2YTQ2OTc2NmZlOTg4ZjExOTYiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI4ODY2MzQsImV4cCI6MTY5MzA1OTQzNH0.y84x6cM-X17ql_jZCEBLb37dkwDLv3ECRSzsJdgwZAU
 
 ### get list search product published
 
@@ -53,10 +53,10 @@ x-api-key: abcxyz
 
 ### publish product
 
-PATCH {{url_dev}}/publish/64db4a215abd09c10fea8ad4
+PATCH {{url_dev}}/publish/64e766ac469766fe988f119d
 x-api-key: abcxyz
-x-client-id: 64db49f25abd09c10fea8acf
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGRiNDlmMjVhYmQwOWMxMGZlYThhY2YiLCJlbWFpbCI6InNob3BqczJAZ21haWwuY29tIiwiaWF0IjoxNjkyMDkyOTE0LCJleHAiOjE2OTIyNjU3MTR9.BHp0ALOaCjXWnPUvoE2YdF0oJqbMj7nXn4aQHZ4asQY
+x-client-id: 64e7666a469766fe988f1196
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU3NjY2YTQ2OTc2NmZlOTg4ZjExOTYiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI4ODY2MzQsImV4cCI6MTY5MzA1OTQzNH0.y84x6cM-X17ql_jZCEBLb37dkwDLv3ECRSzsJdgwZAU
 
 ### update product
 

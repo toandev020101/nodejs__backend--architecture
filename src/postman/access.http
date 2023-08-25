@@ -8,7 +8,7 @@ x-api-key: abcxyz
 
 {
   "name": "Shop JS",
-  "email": "shopjs2@gmail.com",
+  "email": "shopjs@gmail.com",
   "password": "123456"
 }
 
@@ -33,4 +33,4 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2
 GET {{url_dev}}/shop/handleRefreshToken
 x-api-key: abcxyz
 x-client-id: 64cf6706365c514ee5e11dd2
-x-refresh-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTEzNzU1OTksImV4cCI6MTY5MTk4MDM5OX0.h6jml2RQZg1fk_Qh0dsHpZCiVTSctTqqO1F9Bd13co4
+x-refresh-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNmNjcwNjM2NWM1MTRlZTVlMTFkZDIiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI0OTY3ODQsImV4cCI6MTY5MzEwMTU4NH0.D1BOpiNXSZ9mzGDv5nZ9H316Db-pl71LannFgHtvKaM

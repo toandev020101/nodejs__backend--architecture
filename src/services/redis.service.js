@@ -5,6 +5,15 @@ const { promisify } = require('util');
 const InventoryRepository = require('../models/repositories/inventory.repository');
 const redisClient = redis.createClient();
 
+redisClient
+  .connect()
+  .then(() => {
+    console.log('Connected to Redis');
+  })
+  .catch((err) => {
+    console.log('Redis client Error::', err);
+  });
+
 const pExpire = promisify(redisClient.pExpire).bind(redisClient); // chuyen ham => async await
 const setNXAsync = promisify(redisClient.setNX).bind(redisClient); // chuyen ham => async await
 

@@ -1,0 +1,34 @@
+@url_dev = http://localhost:3055/v1/api/comment
+
+### create commenet
+POST {{url_dev}}
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64e7666a469766fe988f1196
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU3NjY2YTQ2OTc2NmZlOTg4ZjExOTYiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI4ODY2MzQsImV4cCI6MTY5MzA1OTQzNH0.y84x6cM-X17ql_jZCEBLb37dkwDLv3ECRSzsJdgwZAU
+
+{
+  "productId": "64e766ac469766fe988f119d",
+  "userId": 1001,
+  "content": "Comment 1.1.1.2",
+  "parentCommentId": "64e77cf8820321a01a57e5a2"
+}
+
+### get comments by parentId
+GET {{url_dev}}?productId=64e766ac469766fe988f119d&parentCommentId=64e77ced820321a01a57e59a
+x-api-key: abcxyz
+x-client-id: 64e7666a469766fe988f1196
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU3NjY2YTQ2OTc2NmZlOTg4ZjExOTYiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI4ODY2MzQsImV4cCI6MTY5MzA1OTQzNH0.y84x6cM-X17ql_jZCEBLb37dkwDLv3ECRSzsJdgwZAU
+
+### delete comment
+DELETE {{url_dev}}
+Content-Type: application/json
+x-api-key: abcxyz
+x-client-id: 64e7666a469766fe988f1196
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGU3NjY2YTQ2OTc2NmZlOTg4ZjExOTYiLCJlbWFpbCI6InNob3Bqc0BnbWFpbC5jb20iLCJpYXQiOjE2OTI4ODY2MzQsImV4cCI6MTY5MzA1OTQzNH0.y84x6cM-X17ql_jZCEBLb37dkwDLv3ECRSzsJdgwZAU
+
+{
+  "productId": "64e766ac469766fe988f119d",
+  "commentId": "64e77cf8820321a01a57e5a2"
+}
+
